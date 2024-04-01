@@ -24,12 +24,14 @@ def config(configuration: Dict[str, ConfigClass], state: State):
 ############################################################
 def execute(request: SimpleText, ray: Ray, state: State) -> SimpleText:
     output = []
+    # Provide the context to our system
     context = [{"role": "system", "content": "You are a tutor for a student who explains everything with the simplest explanation"}]
     for text in request.text:
-        # TODO Add code here
+        # Current query to be asked
         conext.append({ "role": "user",  "content": text})
         response = get_bot_response(conext)
-        contex.append({"role": "assistant", "content": resp})
+        # Appending response to propagate context of the conversation
+        context.append({"role": "assistant", "content": response})
         output.append(response)
 
     return SchemaUtil.create(SimpleText(), dict(text=output))
