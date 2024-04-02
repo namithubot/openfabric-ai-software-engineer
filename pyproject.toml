@@ -10,9 +10,14 @@ openfabric-pysdk = "0.2.7"
 transformers = "^4.39.2"
 torchvision = "^0.17.2"
 tokenizers = "^0.15.2"
+accelerate="^0.28.0"
 bitsandbytes = "^0.43.0"
 protobuf = "^5.26.1"
-accelerator = "^2024.3.8.dev1"
+datasets = "^2.18.0"
+peft = "^0.10.0"
+trl = "^0.8.1"
+tensorboardx = "^2.6.2.2"
+sentencepiece = "^0.2.0"
 
 
 [tool.poetry.dev-dependencies]

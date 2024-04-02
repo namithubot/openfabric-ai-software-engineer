@@ -1,4 +1,4 @@
-from transformers import AutoModelForCausalLM, AutoTokenizer, LlamaTokenizer, pipeline 
+from transformers import AutoModelForCausalLM, AutoTokenizer, LlamaTokenizer, pipeline, BitsAndBytesConfig
 import torch
 
 # Models that can be used
@@ -8,9 +8,7 @@ import torch
 # jondurbin/bagel-20b-v04-llama
 model_name = "Locutusque/OpenCerebrum-1.0-7b-SFT"
 # Load the model
-#model = AutoModelForCausalLM.from_pretrained(model_name, load)
-# The above line is for GPUs, if you are getting bitsandbytes errors, use the below line instead
-model = AutoModelForCausalLM.from_pretrained(model_name, load_in_4bit=True, device_map="auto")
+model = AutoModelForCausalLM.from_pretrained(model_name, quantization_config=BitsAndBytesConfig(load_in_8bit=True))
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
